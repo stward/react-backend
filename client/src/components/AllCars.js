@@ -25,7 +25,7 @@ class AllCars extends Component {
       <ul>
         {this.state.cars.map(car => (
           <li key={car._id}>
-            <Link to={'/cars/${car._id}'}>{car.name}</Link>
+            <Link to={`/cars/${car._id}`}>{car.name}</Link>
           </li>
         ))}
       </ul>

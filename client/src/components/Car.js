@@ -3,7 +3,9 @@ import $ from 'jquery'
 
 class AllCars extends Component {
   state = {
-    car: null
+    name: null,
+    year: null,
+    color: null
   }
 
   componentDidMount() {
@@ -12,19 +14,20 @@ class AllCars extends Component {
 
   getCar = () => {
     $.ajax({
-      url: '/cars',
+      url: '/cars/' + this.props.match.params.id,
       method: 'GET'
     }).done((data) => {
-      this.setState({cars: data})
+      console.log(data)
+      this.setState({name: data.name, year: data.year, color: data.color})
     })
   }
 
   render() {
     return (
       <div>
-        {this.state.cars.map(car =>
-          <div key={car._id}>{car.name}</div>
-        )}
+        <p>{this.state.name}</p>
+        <p>{this.state.year}</p>
+        <p>{this.state.color}</p>
       </div>
     )
   }

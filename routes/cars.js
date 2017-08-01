@@ -8,9 +8,21 @@ router.get('/', function(req, res, next) {
     find().
     exec(function(err, cars){
       if (err) {
-        res.json(err, 'ERROR');
+        res.status(err).json('ERROR')
       } else {
-        res.json(cars);
+        res.json(cars)
+      }
+    })
+})
+
+router.get('/:id', function(req, res, next) {
+  Car.
+    findById(req.params.id).
+    exec(function(err, car){
+      if (err) {
+        res.status(err).json('ERROR')
+      } else {
+        res.json(car)
       }
     })
 })
